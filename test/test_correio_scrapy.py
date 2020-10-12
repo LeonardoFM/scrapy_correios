@@ -3,14 +3,16 @@ from selenium import webdriver
 
 from src.scrapy_correios import Correios
 
+
 class CorreiosFriend(Correios):
     """ This set is used to test private methods only
     """
-    def get_limits(self):
-        self._get_limits()
+    def get_limits(self) -> tuple:
+        return self._get_limits()
 
     def get_all_lines_data(self, line):
         self._get_all_lines_data(line)
+
 
 class TestCorreios(TestCase):
     """
@@ -24,7 +26,7 @@ class TestCorreios(TestCase):
     def test_open_correios_page(self):
         ff = webdriver.Firefox()
         c = Correios(ff)
-        self.assertTrue(isinstance(c,Correios))
+        self.assertTrue(isinstance(c, Correios))
         ff.close()
 
     def test_SC_data_limits(self):
@@ -39,11 +41,11 @@ class TestCorreios(TestCase):
         # search in page
         c.driver.find_element_by_class_name('btn2').click()
         # data range finded
-        c.get_limits()
+        ini, total, step = c.get_limits()
         # knowed limits: 1,50,322
-        self.assertEqual(c.ini,1)
-        self.assertEqual(c.total,322)
-        self.assertEqual(c.step,50)
+        self.assertEqual(ini, 1)
+        self.assertEqual(total, 322)
+        self.assertEqual(step, 50)
         ff.close()
 
     def test_line_cleanner(self):
@@ -55,7 +57,7 @@ class TestCorreios(TestCase):
             f"//select[@class='f1col']/option[text()='SC']").click()
         # search in page
         c.driver.find_element_by_class_name('btn2').click()
-        _in_page = c.driver.find_elements_by_xpath(f"//tr")        
+        _in_page = c.driver.find_elements_by_xpath(f"//tr")
         c.get_all_lines_data(_in_page)
         ff.close()
 
@@ -64,14 +66,19 @@ class TestCorreios(TestCase):
         c = Correios(ff)
         c.navigate()
         c.search_data('SC')
-        self.assertGreaterEqual(len(c.data),0)
-        self.assertGreaterEqual(c.total,len(c.data))
+        self.assertGreaterEqual(len(c.data), 0)
+        self.assertGreaterEqual(c.total, len(c.data))
         ff.close()
-    
+
     def test_two_groups(self):
+        """ SC - total 322
+            RJ - total 128
+        """
         g = ['SC', 'RJ']
         ff = webdriver.Firefox()
         c = Correios(ff)
         c.navigate()
         c.search_group_data(g)
         ff.close()
+        self.assertGreaterEqual(len(c.data), 0)
+        self.assertGreaterEqual(322+128, len(c.data))
