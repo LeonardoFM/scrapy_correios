@@ -64,3 +64,7 @@ Basically we start with some webdriver to instantiate Correios class. Start the 
 Inside project folder with Linux SO the command line is:
 
    <pre><code>python -m unittest test/test_correio_scrapy.py</code></pre>
+
+Over Windows we need the right geckodriver location:
+
+   <code>self.webdriver_path=r'C:\path\to\geckodriver.exe'</code>
