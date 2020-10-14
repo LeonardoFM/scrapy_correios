@@ -5,8 +5,41 @@ location (UF) given.
 
 ## Requirements
  
- - python 3.8
- - pip install -r requirements.txt
+ - python 3.9 https://www.python.org/downloads/
+ - Firefox browser
+ - geckodriver https://github.com/mozilla/geckodriver/releases/tag/v0.27.0
+ - Selenium
+
+## Install in Windows
+
+ - First to clone this project we need the Git https://gitforwindows.org/
+ - Link to install python3 https://python.org.br/instalacao-windows/
+ - and set the global variable Path with geckodriver.exe location
+ - Install Selenium with pip
+
+    pip install -r requirements.txt
+
+## Install in Linux
+
+ - Git to start
+
+    sudo apt-get install git # Ubuntu
+
+or
+
+    sudo pacman -Sy git # Arch linux
+
+ - Install the webdriver
+
+    sudo apt-get install geckodriver # Ubuntu
+
+or
+
+    sudo pacman -Sy geckodriver # Arch linux
+
+ - Finally Selenium
+
+    pip install -r requirements.txt
 
 ## Running
 
@@ -15,3 +48,9 @@ Basically we start with some webdriver to instantiate Correios class. Start the 
  *In the main file we have an example how to run the scrapy_correios code using Correios class.*
 
     python main.py
+
+## Run the tests
+
+Inside project folder with Linux SO the command line is:
+
+    python -m unittest test/test_correio_scrapy.py
