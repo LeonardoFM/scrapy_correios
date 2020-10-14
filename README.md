@@ -31,9 +31,11 @@ or
 
  - Install the webdriver Ubuntu
 
-   tar -xvf geckodriver-v_.__._-linux64.tar.gz # extract
-   chmod +x geckodriver # to excecute
-   sudo mv geckodriver /usr/local/bin/ # move to the right place
+    tar -xvf geckodriver-v_.__._-linux64.tar.gz # extract
+
+    chmod +x geckodriver # to excecute
+
+    sudo mv geckodriver /usr/local/bin/ # move to the right place
 
 or in Arch linux using yaourt
    
