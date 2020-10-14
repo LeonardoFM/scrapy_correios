@@ -17,33 +17,39 @@ location (UF) given.
  - and set the global variable Path with geckodriver.exe location
  - Install Selenium with pip
 
-    pip install -r requirements.txt
+
+   <pre><code>pip install -r requirements.txt</code></pre>
 
 ## Install in Linux
 
  - Git to start
 
-    sudo apt-get install git # Ubuntu
+
+   <pre><code> sudo apt-get install git # Ubuntu </code></pre>
 
 or
 
-    sudo pacman -Sy git # Arch linux
+   <pre><code>sudo pacman -Sy git # Arch linux </code></pre>
 
  - Install the webdriver Ubuntu
 
-    tar -xvf geckodriver-v_.__._-linux64.tar.gz # extract
 
-    chmod +x geckodriver # to excecute
+   <pre><code>tar -xvf geckodriver-v_.__._-linux64.tar.gz # extract </code></pre>
 
-    sudo mv geckodriver /usr/local/bin/ # move to the right place
+
+   <pre><code>chmod +x geckodriver # to excecute </code></pre>
+
+
+   <pre><code>sudo mv geckodriver /usr/local/bin/ # move to the right place </code></pre>
 
 or in Arch linux using yaourt
    
-   yaourt -s geckodriver # Arch linux
+
+   <pre><code>yaourt -s geckodriver # Arch linux </code></pre>
 
  - Finally Selenium
 
-   pip install -r requirements.txt
+   <pre><code>pip install -r requirements.txt </code></pre>
 
 ## Running
 
@@ -51,10 +57,10 @@ Basically we start with some webdriver to instantiate Correios class. Start the 
 
  *In the main file we have an example how to run the scrapy_correios code using Correios class.*
 
-    python main.py
+   <pre><code>python main.py</code></pre>
 
 ## Run the tests
 
 Inside project folder with Linux SO the command line is:
 
-    python -m unittest test/test_correio_scrapy.py
+   <pre><code>python -m unittest test/test_correio_scrapy.py</code></pre>
