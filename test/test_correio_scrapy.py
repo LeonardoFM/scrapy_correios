@@ -24,7 +24,7 @@ class TestCorreios(TestCase):
         self.url = 'http://www.buscacep.correios.com.br/sistemas/buscacep/buscaFaixaCep.cfm'
         self.results = 'ctrlcontent'
         # Windows case example
-        self.webdriver_path=r'C:\Users\Juliane\Downloads\geckodriver.exe'
+        self.webdriver_path=r'C:\path\to\geckodriver.exe'
 
     def test_open_correios_page(self):
         if platform.system() == 'Windows':
