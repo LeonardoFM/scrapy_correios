@@ -29,17 +29,19 @@ or
 
     sudo pacman -Sy git # Arch linux
 
- - Install the webdriver
+ - Install the webdriver Ubuntu
 
-    sudo apt-get install geckodriver # Ubuntu
+   tar -xvf geckodriver-v_.__._-linux64.tar.gz # extract
+   chmod +x geckodriver # to excecute
+   sudo mv geckodriver /usr/local/bin/ # move to the right place
 
-or
-
-    sudo pacman -Sy geckodriver # Arch linux
+or in Arch linux using yaourt
+   
+   yaourt -s geckodriver # Arch linux
 
  - Finally Selenium
 
-    pip install -r requirements.txt
+   pip install -r requirements.txt
 
 ## Running
 
