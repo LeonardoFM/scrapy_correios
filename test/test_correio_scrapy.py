@@ -1,5 +1,6 @@
 from unittest import TestCase
 from selenium import webdriver
+import platform
 
 from src.scrapy_correios import Correios
 
@@ -22,9 +23,14 @@ class TestCorreios(TestCase):
     def setUp(self):
         self.url = 'http://www.buscacep.correios.com.br/sistemas/buscacep/buscaFaixaCep.cfm'
         self.results = 'ctrlcontent'
+        # Windows case example
+        self.webdriver_path=r'C:\path\to\geckodriver.exe'
 
     def test_open_correios_page(self):
-        ff = webdriver.Firefox()
+        if platform.system() == 'Windows':
+            ff = webdriver.Firefox(executable_path=self.webdriver_path)
+        else:
+            ff = webdriver.Firefox()
         c = Correios(ff)
         self.assertTrue(isinstance(c, Correios))
         ff.close()
@@ -32,7 +38,10 @@ class TestCorreios(TestCase):
     def test_SC_data_limits(self):
         """ Open the search for SC location
         """
-        ff = webdriver.Firefox()
+        if platform.system() == 'Windows':
+            ff = webdriver.Firefox(executable_path=self.webdriver_path)
+        else:
+            ff = webdriver.Firefox()
         c = CorreiosFriend(ff)
         c.navigate()
         # select the UF
@@ -49,7 +58,10 @@ class TestCorreios(TestCase):
         ff.close()
 
     def test_line_cleanner(self):
-        ff = webdriver.Firefox()
+        if platform.system() == 'Windows':
+            ff = webdriver.Firefox(executable_path=self.webdriver_path)
+        else:
+            ff = webdriver.Firefox()
         c = CorreiosFriend(ff)
         c.navigate()
         # select the UF
@@ -62,7 +74,10 @@ class TestCorreios(TestCase):
         ff.close()
 
     def test_get_sc_zip_range(self):
-        ff = webdriver.Firefox()
+        if platform.system() == 'Windows':
+            ff = webdriver.Firefox(executable_path=self.webdriver_path)
+        else:
+            ff = webdriver.Firefox()
         c = Correios(ff)
         c.navigate()
         c.search_data('SC')
@@ -75,7 +90,11 @@ class TestCorreios(TestCase):
             RJ - total 128
         """
         g = ['SC', 'RJ']
-        ff = webdriver.Firefox()
+
+        if platform.system() == 'Windows':
+            ff = webdriver.Firefox(executable_path=self.webdriver_path)
+        else:
+            ff = webdriver.Firefox()
         c = Correios(ff)
         c.navigate()
         c.search_group_data(g)
