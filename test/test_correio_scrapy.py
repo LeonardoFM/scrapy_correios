@@ -67,7 +67,7 @@ class TestCorreios(TestCase):
         c.navigate()
         c.search_data('SC')
         self.assertGreaterEqual(len(c.data), 0)
-        self.assertGreaterEqual(c.total, len(c.data))
+        self.assertGreaterEqual(322, len(c.data))
         ff.close()
 
     def test_two_groups(self):

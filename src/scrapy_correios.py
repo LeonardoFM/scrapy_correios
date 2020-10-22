@@ -41,7 +41,10 @@ class Correios:
                     zip_code = f'{word} a {data_line[i+2]}'
                     try:
                         # avoid duplication data
-                        self.data[name]
+                        if not self.data[name]['faixa de cep'] == zip_code:
+                            self.id += 1
+                            self.data.update(
+                                {name: {'id': self.id, 'localidade': name, 'faixa de cep': zip_code}})
                         return True
 
                     except:
